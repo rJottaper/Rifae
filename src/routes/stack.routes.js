@@ -9,6 +9,7 @@ import Login from '../screens/Login';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import NewRaffle from '../screens/NewRaffle';
+import FinishRaffle from '../screens/FinishRaffle';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,7 +24,7 @@ const Tabs = () => {
       }}
     >
       <Tab.Screen  
-        name="HomeTab" 
+        name="Home" 
         component={Home} 
         options={{
           tabBarIcon: () => (
@@ -52,8 +53,9 @@ const Routes = () => {
       }}
     >
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Home" component={Tabs} />
+      <Stack.Screen name="HomeScreen" component={Tabs} />
       <Stack.Screen name="NewRaffle" component={NewRaffle} />
+      <Stack.Screen name="FinishRaffle" component={FinishRaffle} />
     </Stack.Navigator>
   )
 };

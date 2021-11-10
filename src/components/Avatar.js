@@ -2,11 +2,19 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 const Avatar = ({ urlImage }) => {
-  return (
-    <View style={styles.container}>
-      <Image style={styles.avatar} source={{ uri: urlImage }} />
-    </View>
-  );
+  if (urlImage) {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.avatar} source={{ uri: urlImage }} />
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.avatar} source={require('../assets/avatar.png')} />
+      </View>
+    )
+  }
 };
 
 const styles = StyleSheet.create({
@@ -14,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 39,
-    marginBottom: 39
+    marginBottom: 39,
   },
   avatar: {
     width: 168,

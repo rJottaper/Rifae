@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     height: 22,
+    marginTop: 5
   },
   title: {
     flex: 1,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: '#EC7149',
     marginLeft: 20,
-    margin: 2
+    margin: 2,
   },
   border: {
     borderBottomWidth: 1,

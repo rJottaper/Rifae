@@ -15,10 +15,10 @@ const Login = () => {
         <Text style={styles.subtitle}>Creating, managing and inviting friends to your raffle was never so easy =)</Text>
       </View>
       <View style={styles.connect}>
-        <ConnectButton color="#3B5998" title="Connect with Facebook" name="facebook" onPress={() => navigation.navigate('Home')} />
+        <ConnectButton color="#3B5998" title="Connect with Facebook" name="facebook" />
         <Text style={styles.or}>OR</Text>
-        <ConnectButton color="#c5d0d1" title="Connect with Google" name="google" onPress={() => navigation.navigate('Home')} />
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <ConnectButton color="#c5d0d1" title="Connect with Google" name="google" />
+        <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
           <Text style={styles.text}>Continue without connecting</Text>
         </TouchableOpacity>
       </View>
