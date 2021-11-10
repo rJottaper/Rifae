@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, Alert, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, Keyboard } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -9,19 +9,31 @@ import InputValueRow from '../components/InputValueRow';
 import InputTypeRow from '../components/InputTypeRow';
 import Button from '../components/Button';
 
-const FinishRaffle = () => {
+const FinishRaffle = ({ route }) => {
   const navigation = useNavigation();
-  const [numberPeople, setNumberPeople] = useState(0);
+  const [numberPeople, setNumberPeople] = useState(2);
 
   const DecreaseValue = () => {
     setNumberPeople(numberPeople - 1);
-    if (numberPeople <= 0) {
-      setNumberPeople(0);
+    if (numberPeople <= 2) {
+      setNumberPeople(2);
     };
   };
 
   const IncreaseValue = () => {
     setNumberPeople(numberPeople + 1)
+  };
+
+  const { prizeName, prizeDescription, raffleValue, newDate } = route.params;
+
+  const sendItems = () => {
+    navigation.navigate('Home', {
+      prizeName: prizeName,
+      prizeDescription: prizeDescription,
+      raffleValue: raffleValue,
+      newDate: newDate,
+      numberPeople: numberPeople
+    });
   };
 
   return (
@@ -45,7 +57,7 @@ const FinishRaffle = () => {
           <InputTypeRow type="Women Names" />
           <InputTypeRow type="Numbers" />
         </View>
-        <Button title="Create" backgroundColor="#EC7149" color="#FFFFFF" />
+        <Button title="Create" backgroundColor="#EC7149" color="#FFFFFF" onPress={() => sendItems()} />
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );

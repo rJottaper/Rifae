@@ -1,36 +1,59 @@
 import React, { useState } from 'react';
-import { View, Button, Platform } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-const DatePicker = () => {
-  const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('date');
-  const [show, setShow] = useState(false);
-  const [text, setText] = useState('empty');
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-  };
-
-  const chooseDate = () => {
-    <DateTimePicker 
-        value={date}
-        mode={mode}
-        is24Hour={true}
-        display="default"
-        onChange={onChange}
-      />
-  };
-
+const DatePicker = ({ title, showDatePicker, newDate, hideDatePicker, handleConfirm, isDatePickerVisible }) => {
   return (
     <View>
-      <View>
-        <Button title="DatePicker" onPress={() => chooseDate()} />
-      </View>
+      <Text style={styles.title}>{title}</Text>
+      <TouchableOpacity style={styles} style={styles.container} onPress={showDatePicker}>
+        <FontAwesome style={styles.icon} name="calendar" />
+        <Text style={styles.date}>{newDate}</Text>
+        <FontAwesome style={styles.icon2} name="chevron-right" />
+      </TouchableOpacity>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        minimumDate={new Date()}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    width: '100%',
+    height: 47,
+  },
+  title: {
+    fontSize: 14,
+    color: '#8F8F8F',
+    marginTop: 15,
+    marginBottom: 6,
+    marginLeft: 15
+  },
+  date: {
+    fontSize: 19,
+    color: '#EC7149'
+  },
+  icon: {
+    fontSize: 32,
+    color: '#EC7149',
+    marginLeft: 15,
+  },
+  icon2: {
+    fontSize: 17,
+    color: '#EC7149',
+    marginRight: 15,
+    marginTop: 2
+  }
+});
 
 export default DatePicker;
