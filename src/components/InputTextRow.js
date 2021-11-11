@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 
-const InputTextRow = ({ name, bold, value, newValue, multiline }) => {
+const InputTextRow = ({ name, bold, value, newValue, multiline, placeholder }) => {
   if (multiline) {
     return (
       <View>
@@ -24,6 +24,8 @@ const InputTextRow = ({ name, bold, value, newValue, multiline }) => {
             style={[styles.input, { fontWeight: bold }]} 
             value={value}
             onChangeText={newValue}
+            placeholder={placeholder}
+            placeholderTextColor='#8F8F8F'
           />
         </View>
       </View>

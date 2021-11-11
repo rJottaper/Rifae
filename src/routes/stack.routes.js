@@ -10,6 +10,8 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import NewRaffle from '../screens/NewRaffle';
 import FinishRaffle from '../screens/FinishRaffle';
+import RaffleDetails from '../screens/RaffleDetails';
+import BuyTicket from '../screens/BuyTicket';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -56,6 +58,8 @@ const Routes = () => {
       <Stack.Screen name="HomeScreen" component={Tabs} />
       <Stack.Screen name="NewRaffle" component={NewRaffle} />
       <Stack.Screen name="FinishRaffle" component={FinishRaffle} />
+      <Stack.Screen name="RaffleDetails" component={RaffleDetails} />
+      <Stack.Screen name="BuyTicket" component={BuyTicket} />
     </Stack.Navigator>
   )
 };
